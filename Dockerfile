@@ -29,10 +29,11 @@ RUN \
 # NodeJS and NPM
 RUN \
     curl -sL https://deb.nodesource.com/setup_4.x | bash - \
-    && apt-get install -y nodejs \
+    && apt-get install -y nodejs jpegoptim \
     && npm install -g npm \
     && npm install -g bower \
-    && npm install -g gulp
+    && npm install -g gulp \
+    && echo '{ "allow_root": true }' > ~/.bowerrc
 
 # Clear cache
 RUN \
