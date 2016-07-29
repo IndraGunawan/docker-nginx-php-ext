@@ -27,15 +27,11 @@ RUN \
         uuid-dev \
         zlib1g-dev
 
-RUN git clone --branch v1.1.0 https://github.com/datastax/php-driver.git /tmp/php-driver \
-    && cd /tmp/php-driver \
-    && git submodule update --init \
-    && cd ext \
+RUN git clone --branch v1.2.1 --recursive https://github.com/datastax/php-driver.git /tmp/php-driver \
+    && cd /tmp/php-driver/ext \
     && ./install.sh \
-    && rm -rf /tmp/php-driver \
-    && echo 'extension=cassandra.so' > /etc/php/mods-available/cassandra.ini \
-    && ln -s /etc/php/mods-available/cassandra.ini /etc/php/7.0/fpm/conf.d/20-cassandra.ini \
-    && ln -s /etc/php/mods-available/cassandra.ini /etc/php/7.0/cli/conf.d/20-cassandra.ini
+    && echo 'extension=cassandra.so' > /etc/php/7.0/mods-available/cassandra.ini \
+    && phpenmod cassandra
 
 # Clear cache
 RUN \
