@@ -4,12 +4,19 @@ MAINTAINER Indra Gunawan <guind.online@gmail.com>
 
 # NodeJS and NPM
 RUN \
-    curl -sL https://deb.nodesource.com/setup_4.x | bash - \
+    curl -sL https://deb.nodesource.com/setup_7.x | bash - \
     && apt-get install -y nodejs jpegoptim \
     && npm install -g npm \
     && npm install -g bower \
     && npm install -g gulp \
     && echo '{ "allow_root": true }' > ~/.bowerrc
+
+# Install Yarn
+RUN \
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
+    && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
+    && apt-get update \
+    && apt-get install yarn
 
 # Install Cassandra driver
 RUN \
@@ -27,7 +34,7 @@ RUN \
         uuid-dev \
         zlib1g-dev
 
-RUN git clone --branch v1.2.1 --recursive https://github.com/datastax/php-driver.git /tmp/php-driver \
+RUN git clone --branch v1.2.2 --recursive https://github.com/datastax/php-driver.git /tmp/php-driver \
     && cd /tmp/php-driver/ext \
     && ./install.sh \
     && echo 'extension=cassandra.so' > /etc/php/7.0/mods-available/cassandra.ini \
