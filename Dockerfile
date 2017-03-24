@@ -28,6 +28,7 @@ RUN \
         libicu-dev \
         libssl-dev \
         libuv-dev \
+        libelf1 \
         make \
         openssl \
         pkg-config \
