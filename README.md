@@ -1,1 +1,1 @@
-# Docker Nginx + PHP-FPM 7 with Cassandra driver, NodeJS, NPM, Debian Jessi based.
+# Docker Nginx + PHP 7.0 + Debian Stretch based + with PHP Cassandra driver, NodeJS, Yarn.
