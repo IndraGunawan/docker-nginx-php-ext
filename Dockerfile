@@ -3,8 +3,8 @@ FROM indragunawan/nginx-php:latest
 MAINTAINER Indra Gunawan <guind.online@gmail.com>
 
 # NodeJS and NPM
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash -
 RUN \
-    curl -sL https://deb.nodesource.com/setup_8.x | bash - \
     && apt install -y nodejs jpegoptim \
     && npm install -g npm \
     && npm install -g bower \
