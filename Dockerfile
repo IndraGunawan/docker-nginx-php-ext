@@ -4,8 +4,8 @@ MAINTAINER Indra Gunawan <guind.online@gmail.com>
 
 # NodeJS and NPM
 RUN \
-    curl -sL https://deb.nodesource.com/setup_7.x | bash - \
-    && apt-get install -y nodejs jpegoptim \
+    curl -sL https://deb.nodesource.com/setup_8.x | bash - \
+    && apt install -y nodejs jpegoptim \
     && npm install -g npm \
     && npm install -g bower \
     && npm install -g gulp \
@@ -15,13 +15,13 @@ RUN \
 RUN \
     curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
     && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
-    && apt-get update \
-    && apt-get install yarn
+    && apt update \
+    && apt install yarn
 
 # Install Cassandra driver
 RUN \
-    apt-get update \
-    && apt-get install -y --no-install-recommends \
+    apt update \
+    && apt install -y --no-install-recommends \
         cmake \
         g++ \
         libgmp-dev \
@@ -43,6 +43,6 @@ RUN git clone --branch v1.2.2 --recursive https://github.com/datastax/php-driver
 
 # Clear cache
 RUN \
-    apt-get clean \
-    && apt-get autoremove \
+    apt clean \
+    && apt autoremove \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
