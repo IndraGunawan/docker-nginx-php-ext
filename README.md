@@ -1,1 +1,1 @@
-# Docker Nginx + PHP 7.0 + Debian Stretch based + with PHP Cassandra driver, NodeJS, Yarn.
+# Docker Ubuntu Xenial based. Nginx + PHP 7.1 + PHP Cassandra driver, NodeJS, Yarn.
