@@ -23,14 +23,10 @@ RUN \
         cmake \
         g++ \
         libgmp-dev \
-        libicu-dev \
         libssl-dev \
         libuv-dev \
-        make \
-        openssl \
-        pkg-config \
-        uuid-dev \
-        zlib1g-dev
+        libpcre3-dev \
+        make
 
 RUN \
     cd /tmp && git clone -b 'v1.3.1' --single-branch --depth 1 --recursive https://github.com/datastax/php-driver.git php-driver \
