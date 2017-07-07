@@ -1,4 +1,4 @@
-FROM indragunawan/nginx-php:ubuntu
+FROM indragunawan/nginx-php:ubuntu-php7.0
 
 MAINTAINER Indra Gunawan <guind.online@gmail.com>
 
@@ -16,13 +16,15 @@ RUN \
     && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
     && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
     && apt-get update \
-    && apt-get install yarn libelf1 \
+    && apt-get install yarn libelf1
 
     # Install Cassandra driver
-    && apt-get install -y --no-install-recommends \
+RUN \
+    apt-get update && apt-get install -y --no-install-recommends \
         cmake \
         g++ \
         libgmp-dev \
+        openssl \
         libssl-dev \
         libuv-dev \
         libpcre3-dev \
@@ -31,7 +33,7 @@ RUN \
 RUN \
     cd /tmp && git clone -b 'v1.3.1' --single-branch --depth 1 --recursive https://github.com/datastax/php-driver.git php-driver \
     && cd php-driver/ext && ./install.sh \
-    && echo 'extension=cassandra.so' > /etc/php/7.1/mods-available/cassandra.ini \
+    && echo 'extension=cassandra.so' > /etc/php/7.0/mods-available/cassandra.ini \
     && phpenmod cassandra
 
 # Clear cache
