@@ -50,6 +50,11 @@ RUN \
 
     && phpenmod cassandra
 
+# Install wkhtmltopdf
+RUN \
+    apt-get update && apt-get install -y --no-install-recommends \
+        wkhtmltopdf
+
 # Clear cache
 RUN \
     apt-get clean \
