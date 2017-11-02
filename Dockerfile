@@ -55,6 +55,11 @@ RUN \
     apt-get update && apt-get install -y --no-install-recommends \
         wkhtmltopdf
 
+# Install php-soap
+RUN \
+    apt-get update && apt-get install -y --no-install-recommends \
+        php7.0-soap
+
 # Clear cache
 RUN \
     apt-get clean \
