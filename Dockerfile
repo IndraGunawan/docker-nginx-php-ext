@@ -1,4 +1,4 @@
-FROM indragunawan/nginx-php:ubuntu-php7.0
+FROM indragunawan/nginx-php:ubuntu
 
 MAINTAINER Indra Gunawan <guind.online@gmail.com>
 
@@ -37,17 +37,14 @@ RUN \
     && dpkg -i libuv_1.11.0-1_amd64.deb \
     && dpkg -i libuv-dev_1.11.0-1_amd64.deb \
     && dpkg -i libuv-dbg_1.11.0-1_amd64.deb \
-
     && wget --quiet http://downloads.datastax.com/cpp-driver/ubuntu/16.04/cassandra/v2.7.0/cassandra-cpp-driver_2.7.0-1_amd64.deb \
     && wget --quiet http://downloads.datastax.com/cpp-driver/ubuntu/16.04/cassandra/v2.7.0/cassandra-cpp-driver-dev_2.7.0-1_amd64.deb \
     && wget --quiet http://downloads.datastax.com/cpp-driver/ubuntu/16.04/cassandra/v2.7.0/cassandra-cpp-driver-dbg_2.7.0-1_amd64.deb \
     && dpkg -i cassandra-cpp-driver_2.7.0-1_amd64.deb \
     && dpkg -i cassandra-cpp-driver-dev_2.7.0-1_amd64.deb \
     && dpkg -i cassandra-cpp-driver-dbg_2.7.0-1_amd64.deb \
-
-    && wget --quiet http://downloads.datastax.com/php-driver/ubuntu/16.04/cassandra/v1.3.1/php7.0-cassandra-driver_1.3.1~stable-1_amd64.deb \
-    && dpkg -i php7.0-cassandra-driver_1.3.1~stable-1_amd64.deb \
-
+    && wget --quiet http://downloads.datastax.com/php-driver/ubuntu/16.04/cassandra/v1.3.2/php7.1-cassandra-driver_1.3.2~stable-1_amd64.deb \
+    && dpkg -i php7.1-cassandra-driver_1.3.2~stable-1_amd64.deb \
     && phpenmod cassandra
 
 # Install wkhtmltopdf
